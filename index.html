@@ -1,456 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ahmed & Noura — Wedding</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<meta property="og:title" content="Ahmed & Noura — Wedding Invitation" />
+<meta property="og:description" content="Join us on May 30, 2026 at Prince Taz Palace, Cairo" />
+<meta property="og:image" content="hero-poster.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Ahmed & Noura — Wedding Invitation" />
+<meta name="twitter:description" content="Join us on May 30, 2026 at Prince Taz Palace, Cairo" />
+<meta name="twitter:image" content="hero-poster.jpg" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&family=Jost:wght@300;400;500&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --kraft: #C4A882;
-  --kraft-dark: #A88B68;
-  --kraft-light: #D9C4A8;
-  --seal: #B8860B;
-  --cream: #F8F5F0;
-  --ink: #1a1a1a;
-  --muted: #888;
-  --gold: #C9A84C;
+  --kraft: #C4A882; --kraft-dark: #A88B68; --kraft-light: #D9C4A8;
+  --cream: #F8F5F0; --ink: #1a1a1a; --muted: #888;
+  --gold: #C9A84C; --gold-light: #E2CFAA; --gold-dark: #8B6C3A;
 }
 html { scroll-behavior: smooth; }
-body { font-family: 'Jost', sans-serif; background: #e8e4de; overflow-x: hidden; }
+body { font-family: 'Jost', sans-serif; background: #0a0a0a; overflow-x: hidden; }
+html[dir="rtl"] body { font-family: 'Tajawal', sans-serif; }
+html[dir="rtl"] .hero-name,
+html[dir="rtl"] .sec-title,
+html[dir="rtl"] .footer-names { font-family: 'Cormorant Garamond', serif; }
 
-/* ══════════════════════════════
-   INTRO
-══════════════════════════════ */
+/* ── lang: JS controls all show/hide, no !important ── */
+.ar { display: none; }
+
+/* ══ INTRO ══ */
 #intro {
   position: fixed; inset: 0; z-index: 999;
   background: #ede8e1;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  gap: 0;
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 #intro.gone { opacity: 0; visibility: hidden; pointer-events: none; }
-
-.intro-label {
-  font-size: 11px; letter-spacing: 5px;
-  color: #999; text-transform: uppercase;
-  margin-bottom: 6px; font-weight: 300;
-}
-.intro-guest {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 38px; font-style: italic; font-weight: 400;
-  color: var(--ink); margin-bottom: 36px;
-}
-
-/* envelope SVG wrapper */
-.env-wrap {
-  position: relative;
-  width: min(340px, 82vw);
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  user-select: none;
-}
-
-/* envelope built with divs */
-.env {
-  width: 100%;
-  padding-bottom: 68%;
-  position: relative;
-  border-radius: 4px;
-  overflow: visible;
-}
-
-/* back face */
-.env-back {
-  position: absolute; inset: 0;
-  background: var(--kraft);
-  border-radius: 4px;
-  box-shadow: 0 16px 50px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* bottom V */
-.env-vbottom {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 0;
-  border-left: 50% solid transparent;
-  border-right: 50% solid transparent;
-  border-bottom: 60% solid var(--kraft-dark);
-  z-index: 2;
-}
-
-/* left V */
-.env-vleft {
-  position: absolute; top: 0; left: 0; bottom: 0; width: 0;
-  border-top: 50% solid transparent;
-  border-bottom: 50% solid transparent;
-  border-left: 50% solid var(--kraft-light);
-  z-index: 2; opacity: 0.7;
-}
-
-/* right V */
-.env-vright {
-  position: absolute; top: 0; right: 0; bottom: 0; width: 0;
-  border-top: 50% solid transparent;
-  border-bottom: 50% solid transparent;
-  border-right: 50% solid var(--kraft-light);
-  z-index: 2; opacity: 0.7;
-}
-
-/* top flap */
-.env-flap {
-  position: absolute; top: 0; left: 0; right: 0; height: 0;
-  border-left: 50% solid transparent;
-  border-right: 50% solid transparent;
-  border-top: 58% solid var(--kraft);
-  transform-origin: top center;
-  transform: rotateX(0deg);
-  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
-  z-index: 6;
-  filter: brightness(1.05);
-  will-change: transform;
-}
+.intro-label { font-size: 11px; letter-spacing: 5px; color: #999; text-transform: uppercase; margin-bottom: 6px; font-weight: 300; }
+.intro-guest { font-family: 'Cormorant Garamond', serif; font-size: 38px; font-style: italic; color: var(--ink); margin-bottom: 36px; }
+.env-wrap { position: relative; width: min(340px,82vw); cursor: pointer; -webkit-tap-highlight-color: transparent; user-select: none; }
+.env { width: 100%; padding-bottom: 68%; position: relative; border-radius: 4px; overflow: visible; }
+.env-back { position: absolute; inset: 0; background: var(--kraft); border-radius: 4px; box-shadow: 0 16px 50px rgba(0,0,0,0.18); }
+.env-vbottom { position: absolute; bottom: 0; left: 0; right: 0; height: 0; border-left: 50% solid transparent; border-right: 50% solid transparent; border-bottom: 60% solid var(--kraft-dark); z-index: 2; }
+.env-vleft { position: absolute; top: 0; left: 0; bottom: 0; width: 0; border-top: 50% solid transparent; border-bottom: 50% solid transparent; border-left: 50% solid var(--kraft-light); z-index: 2; opacity: 0.7; }
+.env-vright { position: absolute; top: 0; right: 0; bottom: 0; width: 0; border-top: 50% solid transparent; border-bottom: 50% solid transparent; border-right: 50% solid var(--kraft-light); z-index: 2; opacity: 0.7; }
+.env-flap { position: absolute; top: 0; left: 0; right: 0; height: 0; border-left: 50% solid transparent; border-right: 50% solid transparent; border-top: 58% solid var(--kraft); transform-origin: top center; transform: rotateX(0deg); transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); z-index: 6; filter: brightness(1.05); will-change: transform; }
 .env-flap.open { transform: rotateX(180deg); }
-
-/* flap inner shadow line */
-.env-flap-line {
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 1px; background: rgba(0,0,0,0.1); z-index: 7;
-}
-
-/* card inside envelope */
-.env-card {
-  position: absolute;
-  bottom: 0; left: 8%; width: 84%;
-  height: 70%;
-  background: #FAF8F4;
-  z-index: 3;
-  border-radius: 2px;
-  display: flex; align-items: center; justify-content: center;
-  transform: translateY(0);
-  opacity: 0;
-  transition: transform 1s cubic-bezier(0.25,0.46,0.45,0.94) 0.45s,
-              opacity 0.5s ease 0.45s;
-  box-shadow: 0 -2px 12px rgba(0,0,0,0.15);
-}
-.env-card.out {
-  transform: translateY(-58%);
-  opacity: 1;
-}
-.env-card-text {
-  font-size: 14px; letter-spacing: 2px;
-  color: #bbb; text-transform: uppercase; font-weight: 300;
-}
-
-/* wax seal */
-.seal {
-  position: absolute; top: 40%; left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 8;
-  width: clamp(44px, 13vw, 58px);
-  height: clamp(44px, 13vw, 58px);
-  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
-}
+.env-card { position: absolute; bottom: 0; left: 8%; width: 84%; height: 70%; background: #FAF8F4; z-index: 3; border-radius: 2px; display: flex; align-items: center; justify-content: center; transform: translateY(0); opacity: 0; transition: transform 1s cubic-bezier(0.25,0.46,0.45,0.94) 0.45s, opacity 0.5s ease 0.45s; box-shadow: 0 -2px 12px rgba(0,0,0,0.15); }
+.env-card.out { transform: translateY(-58%); opacity: 1; }
+.env-card-text { font-size: 14px; letter-spacing: 2px; color: #bbb; text-transform: uppercase; font-weight: 300; }
+.seal { position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%); z-index: 8; width: clamp(44px,13vw,58px); height: clamp(44px,13vw,58px); transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
 .seal:hover { transform: translate(-50%,-52%) scale(1.1); }
-.seal-circle {
-  width: 100%; height: 100%; border-radius: 50%;
-  background: radial-gradient(circle at 38% 35%, #d4a017, #8B6000);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.35);
-  position: relative;
-}
-.seal-circle::after {
-  content: ''; position: absolute; inset: 4px;
-  border-radius: 50%; border: 1px solid rgba(255,220,100,0.25);
-}
-.seal-heart {
-  color: rgba(255,240,200,0.9); font-size: clamp(14px,4vw,20px);
-  position: relative; z-index: 1;
-}
-
-.intro-tap {
-  margin-top: 24px;
-  font-size: 10px; letter-spacing: 6px; text-transform: uppercase;
-  color: #aaa; font-weight: 300;
-  animation: blink 2.5s ease-in-out infinite;
-}
+.seal-circle { width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle at 38% 35%, #d4a017, #8B6000); display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 12px rgba(0,0,0,0.35); position: relative; }
+.seal-circle::after { content: ''; position: absolute; inset: 4px; border-radius: 50%; border: 1px solid rgba(255,220,100,0.25); }
+.seal-heart { color: rgba(255,240,200,0.9); font-size: clamp(14px,4vw,20px); position: relative; z-index: 1; }
+.intro-tap { margin-top: 24px; font-size: 10px; letter-spacing: 6px; text-transform: uppercase; color: #aaa; font-weight: 300; animation: blink 2.5s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:0.3} 50%{opacity:0.9} }
 
-/* ══════════════════════════════
-   SITE
-══════════════════════════════ */
+/* ══ SITE ══ */
 #site { display: none; }
 #site.on { display: block; }
 
 /* ── HERO ── */
-.hero {
-  position: relative; height: 100svh; min-height: 480px;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  text-align: center; overflow: hidden;
-  color: #fff;
-}
-.hero-video {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; z-index: 0;
-}
-.hero-overlay {
-  position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(to bottom,
-    rgba(0,0,0,0.25) 0%,
-    rgba(0,0,0,0.35) 60%,
-    rgba(0,0,0,0.6) 100%);
-}
-/* Pyramid illustration fallback behind video */
-.hero-fallback {
-  position: absolute; inset: 0; z-index: 0;
-  background: linear-gradient(180deg,
-    #e8a857 0%, #d4834a 30%, #c4703a 55%, #8B5E3C 75%, #5a3a22 100%);
-  overflow: hidden;
-}
-.hero-fallback::before {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 55%;
-  background:
-    /* left pyramid */
-    linear-gradient(135deg, transparent 50%, #7a5228 50%) -140px 0 / 280px 220px no-repeat,
-    /* center pyramid */
-    linear-gradient(135deg, transparent 50%, #8B6035 50%) 50% 0 / 340px 280px no-repeat,
-    /* right pyramid */
-    linear-gradient(135deg, transparent 50%, #6e4820 50%) calc(100% + 80px) 0 / 250px 200px no-repeat;
-}
-.hero-fallback::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 22%;
-  background: rgba(0,0,0,0.35);
-}
-/* sun glow */
-.hero-sun {
-  position: absolute; top: 22%; left: 50%;
-  transform: translateX(-50%);
-  width: 80px; height: 80px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #fff9a0 0%, #f5c842 40%, transparent 70%);
-  opacity: 0.85;
-}
+.hero { position: relative; height: 100svh; min-height: 500px; display: flex; align-items: center; justify-content: center; background: #000; overflow: hidden; }
+.hero-video-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.hero-video-wrap::before, .hero-video-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 25%; background: #000; z-index: 2; }
+.hero-video-wrap::before { left: 0; }
+.hero-video-wrap::after  { right: 0; }
+@media (max-width: 640px) { .hero-video-wrap::before, .hero-video-wrap::after { width: 0; } }
+.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: contrast(1.1) brightness(0.72) saturate(0.85) sepia(0.18); }
+.hero-overlay { position: absolute; inset: 0; z-index: 4; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.65) 100%); }
+.hero-lang { position: absolute; top: clamp(20px,3vh,68px); right: 20px; z-index: 10; display: flex; background: rgba(255,255,255,0.12); border-radius: 20px; overflow: hidden; backdrop-filter: blur(6px); }
+.hero-lang button { padding: 5px 16px; border: none; cursor: pointer; font-size: 11px; letter-spacing: 1px; font-weight: 500; background: transparent; color: #fff; transition: background 0.2s; font-family: 'Jost', sans-serif; }
+.hero-lang button.active { background: rgba(255,255,255,0.88); color: #333; border-radius: 20px; }
+.hero-content { position: relative; z-index: 5; text-align: center; padding: 24px; color: #fff; }
+.hero-pretitle { font-size: 10px; letter-spacing: 7px; text-transform: uppercase; color: rgba(255,255,255,0.72); margin-bottom: 20px; font-weight: 300; }
+.hero-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(52px,13vw,88px); font-weight: 300; font-style: italic; line-height: 0.95; color: #fff; text-shadow: 0 2px 24px rgba(0,0,0,0.4); }
+.hero-amp-span { display: block; font-size: 0.45em; color: rgba(255,255,255,0.75); font-style: normal; margin: 8px 0; letter-spacing: 2px; font-family: 'Jost',sans-serif; font-weight: 300; }
+.hero-divider { width: 40px; height: 1px; background: rgba(255,255,255,0.35); margin: 18px auto; }
+.hero-date { font-size: clamp(11px,2.5vw,14px); letter-spacing: 5px; color: rgba(255,255,255,0.78); font-weight: 300; text-transform: uppercase; }
+.hero-sub { margin-top: 6px; font-size: 11px; letter-spacing: 3px; color: rgba(255,255,255,0.45); font-weight: 300; }
 
-.hero-lang {
-  position: absolute; top: 16px; right: 16px; z-index: 10;
-  display: flex; gap: 0; background: rgba(255,255,255,0.15);
-  border-radius: 20px; overflow: hidden; backdrop-filter: blur(4px);
-}
-.hero-lang button {
-  padding: 5px 14px; border: none; cursor: pointer;
-  font-size: 11px; letter-spacing: 1px; font-family: 'Jost', sans-serif;
-  font-weight: 500; background: transparent; color: #fff;
-  transition: background 0.2s;
-}
-.hero-lang button.active { background: rgba(255,255,255,0.9); color: #333; border-radius: 20px; }
+/* hero animations — only run when .hero-animate is present */
+@keyframes heroFadeUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:none} }
+@keyframes heroFadeIn { from{opacity:0} to{opacity:1} }
+.hero-animate .hero-pretitle { opacity:0; animation: heroFadeUp 0.9s ease forwards 0.2s; }
+.hero-animate .hero-name-s   { opacity:0; animation: heroFadeUp 1s ease forwards 0.55s; }
+.hero-animate .hero-name-amp { opacity:0; animation: heroFadeIn 0.8s ease forwards 1s; }
+.hero-animate .hero-name-n   { opacity:0; animation: heroFadeUp 1s ease forwards 1.25s; }
+.hero-animate .hero-divider  { opacity:0; animation: heroFadeIn 0.8s ease forwards 1.7s; }
+.hero-animate .hero-date     { opacity:0; animation: heroFadeUp 0.9s ease forwards 1.9s; }
+.hero-animate .hero-sub      { opacity:0; animation: heroFadeUp 0.9s ease forwards 2.2s; }
+.hero-animate .hero-scroll   { opacity:0; animation: heroFadeIn 1s ease forwards 2.8s; }
 
-.hero-content { position: relative; z-index: 2; padding: 24px; }
-.hero-pretitle {
-  font-size: 10px; letter-spacing: 7px; text-transform: uppercase;
-  color: rgba(255,255,255,0.75); margin-bottom: 20px;
-  font-weight: 300;
-}
-.hero-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(52px,14vw,88px);
-  font-weight: 300; font-style: italic;
-  line-height: 0.95; color: #fff;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-}
-.hero-amp {
-  display: block; font-size: 0.45em;
-  color: rgba(255,255,255,0.8); font-style: normal;
-  margin: 8px 0; letter-spacing: 2px;
-  font-family: 'Jost',sans-serif; font-weight: 300;
-}
-.hero-date {
-  margin-top: 22px;
-  font-size: clamp(11px,2.5vw,14px);
-  letter-spacing: 5px; color: rgba(255,255,255,0.8);
-  font-weight: 300; text-transform: uppercase;
-}
-.hero-sub {
-  margin-top: 6px; font-size: 11px; letter-spacing: 3px;
-  color: rgba(255,255,255,0.5); font-weight: 300;
-}
+.hero-name-s, .hero-name-n { display: block; }
+.hero-name-amp { display: block; }
+
+/* scroll arrow */
+.hero-scroll { position: absolute; bottom: clamp(24px,5vh,44px); left: 50%; transform: translateX(-50%); z-index: 6; display: flex; flex-direction: column; align-items: center; gap: 6px; cursor: pointer; }
+.hero-scroll-label { font-size: 9px; letter-spacing: 5px; text-transform: uppercase; color: rgba(255,255,255,0.4); font-weight: 300; }
+.hero-scroll-chevrons { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.hero-scroll-chevrons span { display: block; width: 14px; height: 14px; border-right: 1.5px solid rgba(255,255,255,0.5); border-bottom: 1.5px solid rgba(255,255,255,0.5); transform: rotate(45deg); animation: chevronBounce 1.6s ease-in-out infinite; }
+.hero-scroll-chevrons span:nth-child(1) { animation-delay: 0s;    opacity: 0.3; }
+.hero-scroll-chevrons span:nth-child(2) { animation-delay: 0.18s; opacity: 0.6; }
+.hero-scroll-chevrons span:nth-child(3) { animation-delay: 0.36s; opacity: 1;   }
+@keyframes chevronBounce { 0%,100%{transform:rotate(45deg) translateY(-3px)} 50%{transform:rotate(45deg) translateY(3px)} }
+
+/* ── SHARED ── */
+.sec-wrap { background: var(--cream); }
+.section { padding: 72px 24px; max-width: 700px; margin: 0 auto; text-align: center; }
+.sec-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,6vw,42px); font-style: italic; font-weight: 300; color: var(--ink); margin-bottom: 6px; }
+.sec-sub { font-size: 12px; letter-spacing: 3px; color: var(--muted); font-weight: 300; text-transform: uppercase; margin-bottom: 40px; }
+.section-divider { width: 100%; height: 1px; background: linear-gradient(to right, transparent, #ddd, transparent); }
 
 /* ── COUNTDOWN ── */
-.countdown-section {
-  background: var(--cream); padding: 64px 24px 56px;
-  text-align: center;
-}
-.sec-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px,6vw,42px);
-  font-style: italic; font-weight: 300; color: var(--ink);
-  margin-bottom: 6px;
-}
-.sec-sub { font-size: 12px; letter-spacing: 3px; color: var(--muted); font-weight: 300; text-transform: uppercase; margin-bottom: 40px; }
-
 .cd-row { display: flex; justify-content: center; gap: clamp(16px,5vw,36px); flex-wrap: wrap; }
 .cd-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-
-/* circular ring */
 .cd-ring { position: relative; width: clamp(70px,18vw,90px); height: clamp(70px,18vw,90px); }
 .cd-ring svg { position: absolute; inset: 0; transform: rotate(-90deg); }
-.cd-ring circle {
-  fill: none; stroke-width: 2;
-}
-.cd-ring .track { stroke: #e5e0d8; }
-.cd-ring .prog { stroke: var(--ink); stroke-linecap: round; transition: stroke-dashoffset 0.6s ease; }
-.cd-num-wrap {
-  position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-}
-.cd-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(22px,5vw,30px);
-  font-weight: 400; color: var(--ink); line-height: 1;
-}
-.cd-lbl { font-size: 10px; letter-spacing: 3px; color: var(--muted); text-transform: uppercase; font-weight: 300; }
-
-/* ── TIMELINE ── */
-.programme-section {
-  background: #fff; padding: 64px 24px 72px; text-align: center;
-}
-.timeline-scroll { overflow-x: auto; padding-bottom: 8px; }
-.timeline-pills {
-  display: inline-flex; gap: 8px; justify-content: center;
-  min-width: max-content; padding: 0 16px 0;
-}
-.t-pill {
-  padding: 8px 14px; border-radius: 20px; cursor: pointer;
-  font-size: 12px; font-weight: 500; letter-spacing: 0.5px;
-  background: var(--cream); color: #666;
-  border: none; transition: background 0.2s, color 0.2s;
-  white-space: nowrap; font-family: 'Jost', sans-serif;
-}
-.t-pill.active { background: var(--ink); color: #fff; }
-.t-pill span { display: block; font-size: 10px; font-weight: 300; margin-top: 1px; color: inherit; opacity: 0.75; }
-
-.timeline-dot-row {
-  display: flex; justify-content: center; gap: 8px;
-  margin: 14px 0 28px; align-items: center;
-  min-width: max-content; padding: 0 16px;
-}
-.t-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: #ddd; transition: background 0.2s, transform 0.2s;
-  flex-shrink: 0;
-}
-.t-dot.active { background: var(--ink); transform: scale(1.4); }
-/* spacers to align dots under pills */
-.t-dot-spacer { width: calc(14px * 2 + 12px); flex-shrink: 0; }
-
-.timeline-items {
-  display: flex; justify-content: center; gap: 8px;
-  flex-wrap: wrap; margin-top: 0;
-}
-.t-item {
-  width: clamp(100px,26vw,130px);
-  text-align: center; padding: 0 4px;
-}
-.t-item-event {
-  font-size: 14px; font-weight: 500; color: var(--ink);
-  margin-bottom: 6px;
-}
-.t-item-desc {
-  font-size: 12px; color: var(--muted); line-height: 1.5; font-weight: 300;
-}
+.cd-ring circle { fill: none; stroke-width: 2; }
+.cd-ring .track { stroke: var(--gold-light); }
+.cd-ring .prog { stroke: var(--gold); stroke-linecap: round; transition: stroke-dashoffset 0.6s ease; }
+.cd-num-wrap { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.cd-num { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px,5vw,30px); font-weight: 400; color: var(--gold-dark); line-height: 1; }
+.cd-lbl { font-size: 10px; letter-spacing: 3px; color: var(--gold-dark); text-transform: uppercase; font-weight: 300; }
 
 /* ── DAY DETAILS ── */
-.details-section { background: #f5f2ee; padding: 64px 24px; }
-.details-grid {
-  max-width: 640px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-}
+.details-section { background: #f5f2ee; padding: 72px 24px; }
+.details-grid { max-width: 640px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 @media (max-width: 480px) { .details-grid { grid-template-columns: 1fr; } }
-.detail-card {
-  background: #fff; border-radius: 6px;
-  padding: 28px 24px; border: 0.5px solid #e0dbd4;
-}
+.detail-card { background: #fff; border-radius: 6px; padding: 28px 24px; border: 0.5px solid #e0dbd4; }
 .detail-icon { font-size: 20px; margin-bottom: 14px; }
-.detail-head { font-size: 13px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; font-weight: 300; margin-bottom: 6px; }
+.detail-head { font-size: 13px; letter-spacing: 2px; color: var(--gold-dark); text-transform: uppercase; font-weight: 300; margin-bottom: 6px; }
 .detail-name { font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
 .detail-sub { font-size: 13px; color: var(--muted); line-height: 1.6; }
 .detail-btns { display: flex; gap: 8px; margin-top: 16px; }
-.detail-btn {
-  flex: 1; padding: 8px 4px; font-size: 11px; letter-spacing: 1px;
-  border: 1px solid #ddd; border-radius: 4px; background: #fff;
-  color: var(--ink); cursor: pointer; font-family: 'Jost', sans-serif;
-  font-weight: 400; transition: background 0.2s;
-}
-.detail-btn:hover { background: var(--cream); }
+.detail-btn { flex: 1; padding: 9px 4px; font-size: 11px; letter-spacing: 1px; border: 1px solid var(--gold-light); border-radius: 4px; background: #fff; color: var(--gold-dark); cursor: pointer; font-family: 'Jost', sans-serif; transition: background 0.2s; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 4px; }
+.detail-btn:hover { background: var(--gold-light); color: var(--ink); }
 .dress-icon { font-size: 32px; margin-bottom: 10px; display: block; }
 
 /* ── RSVP ── */
-.rsvp-section { background: #fff; padding: 64px 24px 72px; text-align: center; }
+.rsvp-section { background: #fff; padding: 72px 24px; text-align: center; }
 .rsvp-inner { max-width: 360px; margin: 0 auto; text-align: left; }
-.rsvp-label {
-  display: block; font-size: 12px; letter-spacing: 1px;
-  color: var(--ink); margin-bottom: 6px; font-weight: 400;
-}
-.rsvp-label span { color: #e00; }
-.rsvp-field {
-  width: 100%; padding: 11px 14px; margin-bottom: 20px;
-  border: 1px solid #ddd; border-radius: 4px;
-  font-family: 'Jost', sans-serif; font-size: 14px; color: var(--ink);
-  background: #fff; outline: none; transition: border-color 0.2s;
-}
-.rsvp-field:focus { border-color: var(--ink); }
+html[dir="rtl"] .rsvp-inner { text-align: right; }
+.rsvp-label { display: block; font-size: 12px; letter-spacing: 1px; color: var(--ink); margin-bottom: 6px; }
+.rsvp-field { width: 100%; padding: 11px 14px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; font-family: 'Jost', sans-serif; font-size: 14px; color: var(--ink); background: #fff; outline: none; transition: border-color 0.2s; }
+html[dir="rtl"] .rsvp-field { font-family: 'Tajawal', sans-serif; text-align: right; direction: rtl; }
+.rsvp-field:focus { border-color: var(--gold); }
 .rsvp-field::placeholder { color: #bbb; }
-
 .attend-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
-.attend-card {
-  border: 1.5px solid #e5e0d8; border-radius: 6px;
-  padding: 18px 12px; text-align: center; cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
-  font-size: 13px; color: var(--ink); line-height: 1.5;
-  font-weight: 300;
-}
+.attend-card { border: 1.5px solid #e5e0d8; border-radius: 6px; padding: 18px 12px; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; font-size: 13px; color: var(--ink); line-height: 1.5; font-weight: 300; }
 .attend-card .att-emoji { font-size: 24px; display: block; margin-bottom: 6px; }
-.attend-card.selected { border-color: var(--ink); background: #f8f6f2; }
+.attend-card.selected { border-color: var(--gold); background: #fdf8ef; }
 
-.rsvp-sig {
-  width: 100%; height: 100px; margin-bottom: 20px;
-  border: 1px solid #ddd; border-radius: 4px;
-  cursor: crosshair; background: #fdfcfa; display: block;
-}
-.sig-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; display: block; }
-.sig-clear { font-size: 11px; color: var(--muted); cursor: pointer; text-decoration: underline; background: none; border: none; font-family: 'Jost', sans-serif; margin-bottom: 16px; display: block; }
+/* signature */
+.sig-wrap { border: 1px solid var(--gold-light); border-radius: 6px; overflow: hidden; margin-bottom: 12px; }
+.sig-header { background: linear-gradient(to right, var(--gold-light), #f5edd8); padding: 7px 14px; display: flex; justify-content: space-between; align-items: center; }
+.sig-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-dark); font-weight: 300; }
+.sig-clear-btn { font-size: 11px; color: var(--gold-dark); cursor: pointer; text-decoration: underline; background: none; border: none; font-family: 'Jost', sans-serif; padding: 0; }
+.rsvp-sig { width: 100%; height: 110px; display: block; cursor: crosshair; background: #fdfcfa; touch-action: none; }
 
-.rsvp-submit {
-  width: 100%; padding: 15px;
-  background: var(--ink); color: #fff;
-  border: none; border-radius: 4px;
-  font-family: 'Jost', sans-serif; font-size: 12px;
-  letter-spacing: 4px; text-transform: uppercase;
-  cursor: pointer; transition: opacity 0.2s;
-}
-.rsvp-submit:hover { opacity: 0.85; }
-.rsvp-thanks {
-  display: none; text-align: center; padding: 32px 0;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 24px; font-style: italic; color: var(--ink); line-height: 1.8;
-}
+.rsvp-submit { width: 100%; padding: 15px; background: var(--ink); color: var(--gold-light); border: 1px solid var(--gold-dark); border-radius: 4px; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: 4px; text-transform: uppercase; cursor: pointer; transition: background 0.2s, color 0.2s; margin-top: 4px; }
+.rsvp-submit:hover { background: var(--gold-dark); color: #fff; }
+.rsvp-submit:disabled { opacity: 0.6; cursor: wait; }
+.rsvp-thanks { display: none; text-align: center; padding: 32px 0; font-family: 'Cormorant Garamond', serif; font-size: 24px; font-style: italic; color: var(--ink); line-height: 1.8; }
+.rsvp-error { color: #c00; font-size: 12px; margin-top: 8px; text-align: center; display: none; }
+#guestsRow { display: none; }
 
 /* ── FOOTER ── */
-.footer {
-  background: var(--ink); color: rgba(255,255,255,0.7);
-  padding: 56px 24px 48px; text-align: center;
-}
-.footer-names {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(36px,9vw,56px);
-  font-style: italic; font-weight: 300; color: #fff;
-  line-height: 1.1; margin-bottom: 4px;
-}
-.footer-amp { color: var(--gold); font-size: 0.6em; }
+.footer { background: var(--ink); padding: 56px 24px 48px; text-align: center; }
+.footer-names { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px,9vw,56px); font-style: italic; font-weight: 300; color: #fff; line-height: 1.1; margin-bottom: 4px; }
+.footer-amp { color: var(--gold); }
 .footer-rule { width: 40px; height: 1px; background: var(--gold); margin: 18px auto; }
 .footer-date { font-size: 13px; letter-spacing: 4px; color: var(--gold); margin-bottom: 12px; }
 .footer-tagline { font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.35); font-style: italic; font-family: 'Cormorant Garamond',serif; }
@@ -458,36 +183,15 @@ body { font-family: 'Jost', sans-serif; background: #e8e4de; overflow-x: hidden;
 /* ── REVEAL ── */
 .rev { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .rev.in { opacity: 1; transform: none; }
-
-/* ── HERO ANIMATIONS ── */
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes heroFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-@keyframes heroLineGrow {
-  from { scaleX(0); opacity: 0; }
-  to   { scaleX(1); opacity: 1; }
-}
-.hero-pretitle  { opacity: 0; animation: heroFadeUp 0.9s ease forwards; animation-delay: 0.2s; }
-.hero-name-s    { opacity: 0; animation: heroFadeUp 1s ease forwards; animation-delay: 0.55s; display: block; }
-.hero-name-amp  { opacity: 0; animation: heroFadeIn 0.8s ease forwards; animation-delay: 1s; display: block; }
-.hero-name-n    { opacity: 0; animation: heroFadeUp 1s ease forwards; animation-delay: 1.25s; display: block; }
-.hero-divider   { opacity: 0; animation: heroFadeIn 0.8s ease forwards; animation-delay: 1.7s; }
-.hero-date      { opacity: 0; animation: heroFadeUp 0.9s ease forwards; animation-delay: 1.9s; }
-.hero-sub       { opacity: 0; animation: heroFadeUp 0.9s ease forwards; animation-delay: 2.2s; }
 </style>
 </head>
 <body>
 
 <!-- ══ INTRO ══ -->
 <div id="intro">
-  <p class="intro-label">A Special Invitation For</p>
+  <p class="intro-label en">A Special Invitation For</p>
+  <p class="intro-label ar">دعوة خاصة لـ</p>
   <p class="intro-guest">Guest</p>
-
   <div class="env-wrap" id="envWrap">
     <div class="env">
       <div class="env-back"></div>
@@ -495,216 +199,229 @@ body { font-family: 'Jost', sans-serif; background: #e8e4de; overflow-x: hidden;
       <div class="env-vright"></div>
       <div class="env-vbottom"></div>
       <div class="env-flap" id="flap"></div>
-      <div class="env-flap-line"></div>
       <div class="env-card" id="envCard">
-        <span class="env-card-text">Wedding Invitation</span>
+        <span class="env-card-text en">Wedding Invitation</span>
+        <span class="env-card-text ar">دعوة زفاف</span>
       </div>
-      <div class="seal" id="seal">
-        <div class="seal-circle">
-          <span class="seal-heart">♥</span>
-        </div>
+      <div class="seal">
+        <div class="seal-circle"><span class="seal-heart">♥</span></div>
       </div>
     </div>
   </div>
-
-  <p class="intro-tap">Tap to open</p>
+  <p class="intro-tap en">Tap to open</p>
+  <p class="intro-tap ar">اضغط للفتح</p>
 </div>
 
 <!-- ══ SITE ══ -->
 <div id="site">
 
-  <!-- Hero -->
-  <section class="hero">
-    <!-- Pyramid fallback background -->
-    <div class="hero-fallback">
-      <div class="hero-sun"></div>
+  <!-- HERO -->
+  <section class="hero" id="heroSection">
+    <div class="hero-video-wrap">
+      <video class="hero-video" autoplay muted loop playsinline poster="hero-poster.jpg" src="hero-video.mp4"></video>
     </div>
-    <!-- Replace src with a real video of pyramids/sunset -->
-    <video class="hero-video" autoplay muted loop playsinline poster="hero-poster.jpg"
-      src="hero-video.mp4">
-    </video>
     <div class="hero-overlay"></div>
-
     <div class="hero-lang">
-      <button class="active">EN</button>
-      <button>عربي</button>
+      <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
+      <button id="btnAR" onclick="setLang('ar')">عربي</button>
     </div>
-
-          <div class="hero-content">
-      <p class="hero-pretitle">We're getting married</p>
+    <div class="hero-content">
+      <p class="hero-pretitle en">We're getting married</p>
+      <p class="hero-pretitle ar">سنتزوج</p>
       <h1 class="hero-name">
-        <span class="hero-name-s">Ahmed</span>
-        <span class="hero-name-amp hero-amp">&amp;</span>
-        <span class="hero-name-n">Noura</span>
+        <span class="hero-name-s en">Ahmed</span>
+        <span class="hero-name-s ar">أحمد</span>
+        <span class="hero-name-amp hero-amp-span">&amp;</span>
+        <span class="hero-name-n en">Noura</span>
+        <span class="hero-name-n ar">نورا</span>
       </h1>
       <div class="hero-divider"></div>
-      <p class="hero-date">May 30, 2026</p>
-      <p class="hero-sub">Confirm your attendance</p>
+      <p class="hero-date en">May 30, 2026</p>
+      <p class="hero-date ar">٣٠ مايو ٢٠٢٦</p>
+      <p class="hero-sub en">Confirm your attendance</p>
+      <p class="hero-sub ar">تأكيد حضورك</p>
     </div>
-  </section>
-
-  <!-- Countdown -->
-  <section class="countdown-section">
-    <h2 class="sec-title rev">Countdown</h2>
-    <p class="sec-sub rev">To the big day</p>
-    <div class="cd-row rev">
-      <div class="cd-item">
-        <div class="cd-ring">
-          <svg viewBox="0 0 90 90" width="100%" height="100%">
-            <circle class="track" cx="45" cy="45" r="40"/>
-            <circle class="prog" id="rDays" cx="45" cy="45" r="40" stroke-dasharray="251.2" stroke-dashoffset="0"/>
-          </svg>
-          <div class="cd-num-wrap"><span class="cd-num" id="cdD">--</span></div>
-        </div>
-        <span class="cd-lbl">Days</span>
-      </div>
-      <div class="cd-item">
-        <div class="cd-ring">
-          <svg viewBox="0 0 90 90" width="100%" height="100%">
-            <circle class="track" cx="45" cy="45" r="40"/>
-            <circle class="prog" id="rHours" cx="45" cy="45" r="40" stroke-dasharray="251.2" stroke-dashoffset="0"/>
-          </svg>
-          <div class="cd-num-wrap"><span class="cd-num" id="cdH">--</span></div>
-        </div>
-        <span class="cd-lbl">Hours</span>
-      </div>
-      <div class="cd-item">
-        <div class="cd-ring">
-          <svg viewBox="0 0 90 90" width="100%" height="100%">
-            <circle class="track" cx="45" cy="45" r="40"/>
-            <circle class="prog" id="rMins" cx="45" cy="45" r="40" stroke-dasharray="251.2" stroke-dashoffset="0"/>
-          </svg>
-          <div class="cd-num-wrap"><span class="cd-num" id="cdM">--</span></div>
-        </div>
-        <span class="cd-lbl">Minutes</span>
-      </div>
-      <div class="cd-item">
-        <div class="cd-ring">
-          <svg viewBox="0 0 90 90" width="100%" height="100%">
-            <circle class="track" cx="45" cy="45" r="40"/>
-            <circle class="prog" id="rSecs" cx="45" cy="45" r="40" stroke-dasharray="251.2" stroke-dashoffset="0"/>
-          </svg>
-          <div class="cd-num-wrap"><span class="cd-num" id="cdS">--</span></div>
-        </div>
-        <span class="cd-lbl">Seconds</span>
+    <div class="hero-scroll" onclick="document.querySelector('.sec-wrap').scrollIntoView({behavior:'smooth'})">
+      <span class="hero-scroll-label en">Scroll</span>
+      <span class="hero-scroll-label ar">اسحب</span>
+      <div class="hero-scroll-chevrons">
+        <span></span><span></span><span></span>
       </div>
     </div>
   </section>
 
-  <!-- Day Programme -->
-  <section class="programme-section">
-    <h2 class="sec-title rev">Day Programme</h2>
-    <p class="sec-sub rev">What we have planned for you</p>
-    <div class="timeline-scroll rev">
-      <div class="timeline-pills" id="pillRow">
-        <button class="t-pill active" data-i="0">7:30 PM<span>Arrival</span></button>
-        <button class="t-pill" data-i="1">8:00 PM<span>Ceremony</span></button>
-        <button class="t-pill" data-i="2">9:30 PM<span>Photos</span></button>
-        <button class="t-pill" data-i="3">10:00 PM<span>Dinner</span></button>
-        <button class="t-pill" data-i="4">10:45 PM<span>Dancing</span></button>
-        <button class="t-pill" data-i="5">12:30 AM<span>End</span></button>
-      </div>
-      <div class="timeline-dot-row" id="dotRow">
-        <div class="t-dot active"></div>
-        <div class="t-dot"></div>
-        <div class="t-dot"></div>
-        <div class="t-dot"></div>
-        <div class="t-dot"></div>
-        <div class="t-dot"></div>
+  <!-- COUNTDOWN -->
+  <div class="sec-wrap">
+    <div class="section">
+      <h2 class="sec-title rev en">Countdown</h2>
+      <h2 class="sec-title rev ar">العد التنازلي</h2>
+      <p class="sec-sub rev en">To the big day</p>
+      <p class="sec-sub rev ar">حتى اليوم الكبير</p>
+      <div class="cd-row rev">
+        <div class="cd-item">
+          <div class="cd-ring"><svg viewBox="0 0 90 90" width="100%" height="100%"><circle class="track" cx="45" cy="45" r="40"/><circle class="prog" id="rDays" cx="45" cy="45" r="40" stroke-dasharray="251.2" stroke-dashoffset="0"/></svg><div class="cd-num-wrap"><span class="cd-num" id="cdD">--</span></div></div>
+          <span class="cd-lbl en">Days</span><span class="cd-lbl ar">أيام</span>
+        </div>
+        <div class="cd-item">
+          <div class="cd-ring"><svg viewBox="0 0 90 90" width="100%" height="100%"><circle class="track" cx="45" cy="45" r="40"/><circle class="prog" id="rHours" cx="45" cy="45" r="40" stroke-dasharray="251.2" stroke-dashoffset="0"/></svg><div class="cd-num-wrap"><span class="cd-num" id="cdH">--</span></div></div>
+          <span class="cd-lbl en">Hours</span><span class="cd-lbl ar">ساعات</span>
+        </div>
+        <div class="cd-item">
+          <div class="cd-ring"><svg viewBox="0 0 90 90" width="100%" height="100%"><circle class="track" cx="45" cy="45" r="40"/><circle class="prog" id="rMins" cx="45" cy="45" r="40" stroke-dasharray="251.2" stroke-dashoffset="0"/></svg><div class="cd-num-wrap"><span class="cd-num" id="cdM">--</span></div></div>
+          <span class="cd-lbl en">Minutes</span><span class="cd-lbl ar">دقائق</span>
+        </div>
+        <div class="cd-item">
+          <div class="cd-ring"><svg viewBox="0 0 90 90" width="100%" height="100%"><circle class="track" cx="45" cy="45" r="40"/><circle class="prog" id="rSecs" cx="45" cy="45" r="40" stroke-dasharray="251.2" stroke-dashoffset="0"/></svg><div class="cd-num-wrap"><span class="cd-num" id="cdS">--</span></div></div>
+          <span class="cd-lbl en">Seconds</span><span class="cd-lbl ar">ثوانٍ</span>
+        </div>
       </div>
     </div>
-    <div class="timeline-items rev">
-      <div class="t-item"><div class="t-item-event">Guest Arrival</div><div class="t-item-desc">Reception and welcome at the venue</div></div>
-      <div class="t-item"><div class="t-item-event">Wedding Ceremony</div><div class="t-item-desc">The most special moment of the day</div></div>
-      <div class="t-item"><div class="t-item-event">Wedding Photos</div><div class="t-item-desc">Leave a memory for our special day</div></div>
-      <div class="t-item"><div class="t-item-event">Banquet Dinner</div><div class="t-item-desc">Dinner and celebration with family and friends</div></div>
-      <div class="t-item"><div class="t-item-event">Party &amp; Dancing</div><div class="t-item-desc">Dance and celebrate together on the dance floor</div></div>
-      <div class="t-item"><div class="t-item-event">End of Celebration</div><div class="t-item-desc">Farewell and beautiful memories to remember</div></div>
-    </div>
-  </section>
+  </div>
 
-  <!-- Day Details -->
+  <div class="section-divider"></div>
+
+  <!-- DAY DETAILS -->
   <section class="details-section">
     <div style="max-width:640px;margin:0 auto 40px;text-align:center">
-      <h2 class="sec-title rev">Day Details</h2>
-      <p class="sec-sub rev">Everything you need to know</p>
+      <h2 class="sec-title rev en">Day Details</h2>
+      <h2 class="sec-title rev ar">تفاصيل اليوم</h2>
+      <p class="sec-sub rev en">Everything you need to know</p>
+      <p class="sec-sub rev ar">كل ما تحتاج معرفته</p>
     </div>
     <div class="details-grid">
-      <div class="detail-card rev">
+      <div class="detail-card rev" style="grid-column:1/-1">
         <div class="detail-icon">📍</div>
-        <div class="detail-head">Location</div>
-        <div class="detail-name">Grand Palace Ballroom</div>
-        <div class="detail-sub">12 Al-Nil Street, Giza<br>From 7:00 PM to 1:00 AM</div>
+        <div class="detail-head en">Location</div>
+        <div class="detail-head ar">الموقع</div>
+        <div class="detail-name en">Prince Taz Palace</div>
+        <div class="detail-name ar">قصر الأمير طاز</div>
+        <div class="detail-sub en">Haret Al Syoufeya, El-Darb El-Ahmar, El Khalifa, Cairo · From 5:00 PM to 9:00 PM</div>
+        <div class="detail-sub ar">حارة الصوفية - الدرب الأحمر - الخليفة - القاهرة · من ٥:٠٠ م حتى ٩:٠٠ م</div>
         <div class="detail-btns">
-          <button class="detail-btn">Open in Maps</button>
-          <button class="detail-btn">Add to Calendar</button>
+          <a class="detail-btn" href="https://maps.app.goo.gl/Eg8zKdgPDsHicCVn9" target="_blank" rel="noopener">
+            <span class="en">📍 Open in Maps</span><span class="ar">📍 فتح في الخريطة</span>
+          </a>
+          <button class="detail-btn" id="calBtn">
+            <span class="en">📅 Add to Calendar</span><span class="ar">📅 إضافة للتقويم</span>
+          </button>
         </div>
       </div>
-      <div class="detail-card rev">
-        <div class="detail-icon">📍</div>
-        <div class="detail-head">Location</div>
-        <div class="detail-name">After Party Venue</div>
-        <div class="detail-sub">Details to be announced<br>Stay tuned</div>
-        <div class="detail-btns">
-          <button class="detail-btn">Open in Maps</button>
-          <button class="detail-btn">Add to Calendar</button>
-        </div>
-      </div>
-      <div class="detail-card rev" style="grid-column:1/-1;">
+      <div class="detail-card rev" style="grid-column:1/-1">
         <span class="dress-icon">👔</span>
-        <div class="detail-name">Dress Code — Semi Formal</div>
-        <div class="detail-sub" style="margin-top:4px">Please dress in elegant semi-formal attire. Avoid white and cream tones.</div>
+        <div class="detail-name en">Dress Code — Semi Formal</div>
+        <div class="detail-name ar">كود الزي — شبه رسمي</div>
+        <div class="detail-sub en" style="margin-top:4px">Please dress in elegant semi-formal attire. Avoid white and cream tones.</div>
+        <div class="detail-sub ar" style="margin-top:4px">يرجى ارتداء ملابس أنيقة شبه رسمية. تجنب الألوان البيضاء والكريمية.</div>
       </div>
     </div>
   </section>
+
+  <div class="section-divider"></div>
 
   <!-- RSVP -->
   <section class="rsvp-section">
-    <h2 class="sec-title rev">Confirm your attendance</h2>
-    <p class="sec-sub rev">We hope to count on you</p>
+    <h2 class="sec-title rev en">Confirm your attendance</h2>
+    <h2 class="sec-title rev ar">تأكيد حضورك</h2>
+    <p class="sec-sub rev en">We hope to count on you</p>
+    <p class="sec-sub rev ar">نأمل أن نعتمد عليك</p>
     <div class="rsvp-inner rev">
-      <label class="rsvp-label">Full name <span>*</span></label>
-      <input class="rsvp-field" type="text" placeholder="Your name" />
-
-      <label class="rsvp-label" style="margin-bottom:10px">Will you attend?</label>
+      <label class="rsvp-label"><span class="en">Full name</span><span class="ar">الاسم الكامل</span> <span style="color:#e00">*</span></label>
+      <input class="rsvp-field" type="text" id="rsvpName" placeholder="Your name" />
+      <label class="rsvp-label" style="margin-bottom:10px"><span class="en">Will you attend?</span><span class="ar">هل ستحضر؟</span></label>
       <div class="attend-row">
         <div class="attend-card" id="attYes" onclick="selectAttend('yes')">
           <span class="att-emoji">🎉</span>
-          Yes, I'll be there! 🎉
+          <span class="en">Yes, I'll be there! 🎉</span>
+          <span class="ar">نعم، سأكون هناك! 🎉</span>
         </div>
         <div class="attend-card" id="attNo" onclick="selectAttend('no')">
           <span class="att-emoji">😔</span>
-          Sorry, I can't make it 😔
+          <span class="en">Sorry, I can't make it 😔</span>
+          <span class="ar">آسف، لن أستطيع الحضور 😔</span>
         </div>
       </div>
 
-      <label class="rsvp-label">Message for the couple</label>
-      <textarea class="rsvp-field" placeholder="Write a message…" rows="3" style="resize:vertical"></textarea>
-
-      <label class="sig-label">Signature</label>
-      <canvas class="rsvp-sig" id="sigCanvas"></canvas>
-      <button class="sig-clear" onclick="clearSig()">Clear signature</button>
-
-      <button class="rsvp-submit" id="rsvpBtn">Send Confirmation</button>
+      <div id="guestsRow">
+        <label class="rsvp-label"><span class="en">Number of guests</span><span class="ar">عدد الحضور</span></label>
+        <select class="rsvp-field" id="rsvpGuests">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+        </select>
+      </div>
+      <label class="rsvp-label"><span class="en">Message for the couple</span><span class="ar">رسالة للعروسين</span></label>
+      <textarea class="rsvp-field" id="rsvpMsg" placeholder="Write a message…" rows="3" style="resize:vertical"></textarea>
+      <div class="sig-wrap">
+        <div class="sig-header">
+          <span class="sig-label en">Signature</span>
+          <span class="sig-label ar">التوقيع</span>
+          <button class="sig-clear-btn" id="sigClearBtn"><span class="en">Clear</span><span class="ar">مسح</span></button>
+        </div>
+        <canvas class="rsvp-sig" id="sigCanvas"></canvas>
+      </div>
+      <button class="rsvp-submit" id="rsvpBtn">
+        <span class="en">Send Confirmation</span>
+        <span class="ar">إرسال التأكيد</span>
+      </button>
+      <p class="rsvp-error" id="rsvpError">Something went wrong. Please try again.</p>
     </div>
     <div class="rsvp-thanks" id="rsvpThanks">
-      ✦<br><br>Thank you — we cannot wait<br>to celebrate with you.
+      ✦<br><br>
+      <span class="en">Thank you — we cannot wait<br>to celebrate with you.</span>
+      <span class="ar">شكراً لك — لا نستطيع الانتظار<br>للاحتفال معك.</span>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-names">
-      Ahmed <span class="footer-amp">&amp;</span> Noura
+      <span class="en">Ahmed <span class="footer-amp">&amp;</span> Noura</span>
+      <span class="ar">أحمد <span class="footer-amp">&amp;</span> نورا</span>
     </div>
     <div class="footer-rule"></div>
-    <div class="footer-date">May 30, 2026</div>
-    <div class="footer-tagline">With all our love</div>
+    <div class="footer-date en">May 30, 2026</div>
+    <div class="footer-date ar">٣٠ مايو ٢٠٢٦</div>
+    <div class="footer-tagline en">With all our love</div>
+    <div class="footer-tagline ar">بكل محبتنا</div>
   </footer>
-
 </div>
 
 <script>
+// ══════════════════════════════════════════
+// SUPABASE CONFIG — paste your values here
+// ══════════════════════════════════════════
+const SUPABASE_URL    = 'https://fkscjpzrcboavkfxrutj.supabase.co';
+const SUPABASE_ANON   = 'sb_publishable_0UTH-1i4yXlUss_P3Lt1Cw_MHVfIoiq';
+const TABLE_NAME      = 'rsvps';
+// ══════════════════════════════════════════
+
+// ─── LANG ────────────────────────────────
+const INLINE_TAGS = new Set(['span','a','button','strong','em','b','i']);
+function displayFor(el) {
+  return INLINE_TAGS.has(el.tagName.toLowerCase()) ? 'inline' : 'block';
+}
+function setLang(lang) {
+  document.documentElement.setAttribute('dir',  lang === 'ar' ? 'rtl' : 'ltr');
+  document.documentElement.setAttribute('lang', lang);
+  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+  document.getElementById('btnAR').classList.toggle('active', lang === 'ar');
+
+  document.querySelectorAll('.en').forEach(el => {
+    el.style.display = lang === 'en' ? displayFor(el) : 'none';
+  });
+  document.querySelectorAll('.ar').forEach(el => {
+    el.style.display = lang === 'ar' ? displayFor(el) : 'none';
+  });
+
+  document.getElementById('rsvpName').placeholder = lang === 'ar' ? 'اسمك'        : 'Your name';
+  document.getElementById('rsvpMsg').placeholder  = lang === 'ar' ? 'اكتب رسالة…' : 'Write a message…';
+}
+// Run on load to ensure .ar stays hidden
+setLang('en');
+
 // ─── INTRO ───────────────────────────────
 const intro   = document.getElementById('intro');
 const site    = document.getElementById('site');
@@ -712,69 +429,46 @@ const flap    = document.getElementById('flap');
 const envCard = document.getElementById('envCard');
 const envWrap = document.getElementById('envWrap');
 let opened = false;
-
-function open() {
-  if (opened) return;
-  opened = true;
-  // flap lifts
+function openEnv() {
+  if (opened) return; opened = true;
   flap.classList.add('open');
-  // card rises
   setTimeout(() => envCard.classList.add('out'), 420);
-  // fade intro
   setTimeout(() => intro.classList.add('gone'), 1500);
-  // show site
   setTimeout(() => {
     site.classList.add('on');
     document.body.style.background = '#f8f5f0';
+    // trigger hero animations AFTER site is visible
+    document.getElementById('heroSection').classList.add('hero-animate');
     startCountdown();
     initReveal();
   }, 2200);
 }
-
-envWrap.addEventListener('click', open);
-envWrap.addEventListener('touchend', e => { e.preventDefault(); open(); });
+envWrap.addEventListener('click', openEnv);
+envWrap.addEventListener('touchend', e => { e.preventDefault(); openEnv(); });
 
 // ─── COUNTDOWN ───────────────────────────
-const C = 251.2; // 2π × 40
+const C = 251.2;
 function ring(id, val, max) {
   const el = document.getElementById(id);
-  if (!el) return;
-  const pct = Math.min(val / max, 1);
-  el.style.strokeDashoffset = C - pct * C;
+  if (el) el.style.strokeDashoffset = C - Math.min(val/max,1)*C;
 }
 function startCountdown() {
-  const target = new Date('2026-05-30T19:00:00');
+  const target = new Date('2026-05-30T17:00:00');
   function tick() {
     const diff = target - Date.now();
     if (diff <= 0) return;
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cdD').textContent = d;
-    document.getElementById('cdH').textContent = h;
-    document.getElementById('cdM').textContent = m;
-    document.getElementById('cdS').textContent = s;
-    ring('rDays',  d % 365, 365);
-    ring('rHours', h, 24);
-    ring('rMins',  m, 60);
-    ring('rSecs',  s, 60);
+    const d=Math.floor(diff/86400000), h=Math.floor((diff%86400000)/3600000),
+          m=Math.floor((diff%3600000)/60000), s=Math.floor((diff%60000)/1000);
+    document.getElementById('cdD').textContent=d;
+    document.getElementById('cdH').textContent=h;
+    document.getElementById('cdM').textContent=m;
+    document.getElementById('cdS').textContent=s;
+    ring('rDays',d%365,365); ring('rHours',h,24); ring('rMins',m,60); ring('rSecs',s,60);
   }
-  tick(); setInterval(tick, 1000);
+  tick(); setInterval(tick,1000);
 }
 
-// ─── TIMELINE PILLS ──────────────────────
-document.getElementById('pillRow').addEventListener('click', e => {
-  const btn = e.target.closest('.t-pill');
-  if (!btn) return;
-  document.querySelectorAll('.t-pill').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.t-dot').forEach(d => d.classList.remove('active'));
-  btn.classList.add('active');
-  const i = +btn.dataset.i;
-  document.querySelectorAll('.t-dot')[i]?.classList.add('active');
-});
-
-// ─── SCROLL REVEAL ───────────────────────
+// ─── REVEAL ──────────────────────────────
 function initReveal() {
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -782,38 +476,117 @@ function initReveal() {
   document.querySelectorAll('.rev').forEach(el => io.observe(el));
 }
 
-// ─── ATTEND SELECT ───────────────────────
+// ─── CALENDAR ────────────────────────────
+document.getElementById('calBtn').addEventListener('click', () => {
+  const ics = [
+    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Wedding//EN','BEGIN:VEVENT',
+    'DTSTART:20260530T170000','DTEND:20260530T210000',
+    'SUMMARY:Ahmed & Noura Wedding',
+    'DESCRIPTION:Wedding celebration of Ahmed and Noura',
+    'LOCATION:Prince Taz Palace\\, Haret Al Syoufeya\\, El-Darb El-Ahmar\\, Cairo',
+    'URL:https://maps.app.goo.gl/Eg8zKdgPDsHicCVn9',
+    'END:VEVENT','END:VCALENDAR'
+  ].join('\r\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([ics],{type:'text/calendar'}));
+  a.download = 'Ahmed-Noura-wedding.ics'; a.click();
+});
+
+// ─── ATTEND ──────────────────────────────
+let attendance = '';
 function selectAttend(v) {
-  document.getElementById('attYes').classList.toggle('selected', v === 'yes');
-  document.getElementById('attNo').classList.toggle('selected', v === 'no');
+  attendance = v;
+  document.getElementById('attYes').classList.toggle('selected', v==='yes');
+  document.getElementById('attNo').classList.toggle('selected', v==='no');
+  document.getElementById('guestsRow').style.display = v === 'yes' ? 'block' : 'none';
 }
 
-// ─── SIGNATURE CANVAS ────────────────────
+// ─── SIGNATURE ───────────────────────────
 const canvas = document.getElementById('sigCanvas');
-const ctx = canvas.getContext('2d');
-let drawing = false;
-canvas.width = canvas.offsetWidth || 320;
-canvas.height = canvas.offsetHeight || 100;
-ctx.strokeStyle = '#1a1a1a'; ctx.lineWidth = 1.5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+const ctx    = canvas.getContext('2d');
+let drawing  = false;
+let hasSig   = false;
 
-function pos(e) {
-  const r = canvas.getBoundingClientRect();
+function initCanvas() {
+  // set physical pixel size matching CSS size
+  const rect = canvas.getBoundingClientRect();
+  canvas.width  = rect.width  || 340;
+  canvas.height = rect.height || 110;
+  ctx.strokeStyle = '#8B6C3A';
+  ctx.lineWidth   = 1.8;
+  ctx.lineCap     = 'round';
+  ctx.lineJoin    = 'round';
+}
+
+// init after a short delay so the element has laid out
+setTimeout(initCanvas, 100);
+window.addEventListener('resize', initCanvas);
+
+function getPos(e) {
+  const r   = canvas.getBoundingClientRect();
   const src = e.touches ? e.touches[0] : e;
   return [src.clientX - r.left, src.clientY - r.top];
 }
-canvas.addEventListener('mousedown',  e => { drawing = true; ctx.beginPath(); ctx.moveTo(...pos(e)); });
-canvas.addEventListener('mousemove',  e => { if (!drawing) return; ctx.lineTo(...pos(e)); ctx.stroke(); });
-canvas.addEventListener('mouseup',    () => drawing = false);
-canvas.addEventListener('mouseleave', () => drawing = false);
-canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; ctx.beginPath(); ctx.moveTo(...pos(e)); }, {passive:false});
-canvas.addEventListener('touchmove',  e => { e.preventDefault(); if (!drawing) return; ctx.lineTo(...pos(e)); ctx.stroke(); }, {passive:false});
-canvas.addEventListener('touchend',   () => drawing = false);
-function clearSig() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+canvas.addEventListener('mousedown',  e => { drawing=true; hasSig=true; ctx.beginPath(); ctx.moveTo(...getPos(e)); });
+canvas.addEventListener('mousemove',  e => { if (!drawing) return; ctx.lineTo(...getPos(e)); ctx.stroke(); });
+canvas.addEventListener('mouseup',    () => drawing=false);
+canvas.addEventListener('mouseleave', () => drawing=false);
+canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing=true; hasSig=true; ctx.beginPath(); ctx.moveTo(...getPos(e)); }, {passive:false});
+canvas.addEventListener('touchmove',  e => { e.preventDefault(); if(!drawing) return; ctx.lineTo(...getPos(e)); ctx.stroke(); }, {passive:false});
+canvas.addEventListener('touchend',   () => drawing=false);
 
-// ─── RSVP SUBMIT ─────────────────────────
-document.getElementById('rsvpBtn').addEventListener('click', () => {
-  document.querySelector('.rsvp-inner').style.display = 'none';
-  document.getElementById('rsvpThanks').style.display = 'block';
+document.getElementById('sigClearBtn').addEventListener('click', () => {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  hasSig = false;
+});
+
+// ─── RSVP SUBMIT → SUPABASE ──────────────
+document.getElementById('rsvpBtn').addEventListener('click', async () => {
+  const name = document.getElementById('rsvpName').value.trim();
+  const msg  = document.getElementById('rsvpMsg').value.trim();
+  const btn  = document.getElementById('rsvpBtn');
+  const err  = document.getElementById('rsvpError');
+
+  if (!name) {
+    document.getElementById('rsvpName').focus();
+    document.getElementById('rsvpName').style.borderColor = '#e00';
+    return;
+  }
+
+  // get signature as base64 (empty string if blank)
+  const sigData = hasSig ? canvas.toDataURL('image/png') : '';
+
+  btn.disabled = true;
+  err.style.display = 'none';
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/${TABLE_NAME}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type':  'application/json',
+        'apikey':        SUPABASE_ANON,
+        'Authorization': `Bearer ${SUPABASE_ANON}`,
+        'Prefer':        'return=minimal'
+      },
+      body: JSON.stringify({
+        name,
+        attending:    attendance || 'no_answer',
+        guests:       parseInt(document.getElementById('rsvpGuests').value),
+        message:      msg,
+        signature:    sigData,
+        submitted_at: new Date().toISOString()
+      })
+    });
+
+    if (!res.ok) throw new Error(await res.text());
+
+    document.querySelector('.rsvp-inner').style.display = 'none';
+    document.getElementById('rsvpThanks').style.display = 'block';
+  } catch(e) {
+    console.error(e);
+    err.style.display = 'block';
+    btn.disabled = false;
+  }
 });
 </script>
 </body>
