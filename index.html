@@ -188,6 +188,87 @@ html[dir="rtl"] .rsvp-field { font-family: 'Tajawal', sans-serif; text-align: ri
 .rev { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
 .rev.in { opacity: 1; transform: none; }
 </style>
+
+
+<style>
+/* ── COUPLE PHOTOS ── */
+.couple-section {
+  background: var(--cream-dark, #EDE5D4);
+  padding: 72px 24px;
+  text-align: center;
+}
+.couple-section .sec-title { margin-bottom: 6px; }
+.couple-section .sec-sub   { margin-bottom: 48px; }
+
+.couple-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* individual portrait frames */
+.couple-frame {
+  position: relative;
+  width: clamp(130px, 36vw, 250px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.couple-img-wrap {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 50% 50% 48% 48% / 42% 42% 58% 58%;
+  overflow: hidden;
+  /*border: 6px solid #fff;*/
+  outline: 1px solid var(--gold-light);
+  /*box-shadow: 0 8px 32px rgba(44,24,16,0.14);*/
+  position: relative;
+}
+.couple-img-wrap img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* floral ring overlay — pure CSS */
+.couple-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  border: 2px solid var(--gold-light);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.couple-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(22px, 6vw, 32px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1;
+}
+
+/* center ampersand */
+.couple-amp {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 10vw, 56px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  padding-bottom: clamp(40px, 12vw, 70px);
+  flex-shrink: 0;
+}
+</style>
 </head>
 <body>
 
@@ -253,6 +334,39 @@ html[dir="rtl"] .rsvp-field { font-family: 'Tajawal', sans-serif; text-align: ri
       </div>
     </div>
   </section>
+
+  
+<section class="couple-section">
+  <h2 class="sec-title rev en">Save The Date</h2>
+  <h2 class="sec-title rev ar">احتفظ بالتاريخ</h2>
+  <p class="sec-sub rev en">The beautiful story begins</p>
+  <p class="sec-sub rev ar">تبدأ القصة الجميلة</p>
+
+  <div class="couple-row rev">
+
+    <!-- Bride -->
+    <div class="couple-frame">
+      <div class="couple-img-wrap">
+        <img src="bride.png" alt="Bride" />
+      </div>
+      <span class="couple-name en">Noura</span>
+      <span class="couple-name ar">نورا</span>
+    </div>
+
+    <!-- Ampersand -->
+    <div class="couple-amp">&amp;</div>
+
+    <!-- Groom -->
+    <div class="couple-frame">
+      <div class="couple-img-wrap">
+        <img src="groom.png" alt="Groom" />
+      </div>
+      <span class="couple-name en">Ahmed</span>
+      <span class="couple-name ar">أحمد</span>
+    </div>
+
+  </div>
+</section>
 
   <!-- COUNTDOWN -->
   <div class="sec-wrap">
